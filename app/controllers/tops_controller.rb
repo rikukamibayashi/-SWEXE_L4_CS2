@@ -8,7 +8,8 @@ class TopsController < ApplicationController
     end
     
     def login
-        if params[:uid] == 'kindai' and params[:pass] == 'sanriko'
+        if User.find_by(uid: params[:uid], pass: params[:pass])
+        #if params[:uid] == 'kindai' and params[:pass] == 'sanriko'
             session[:login_uid] = params[:uid]
             redirect_to root_path
         else
